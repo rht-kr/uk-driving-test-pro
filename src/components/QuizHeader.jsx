@@ -1,0 +1,4 @@
+import { Clock3, Flag, X } from "lucide-react";
+import formatTime from "../utils/formatTime";
+import ProgressBar from "./ProgressBar";
+export default function QuizHeader({index,total,secondsLeft,flaggedCount,onExit}){const progress=Math.round(((index+1)/total)*100);return <header className="quiz-header"><div className="quiz-header-row"><div className="brand compact"><span className="brand-mark">D</span><span>DriveReady</span></div><div className={`timer ${secondsLeft<300?"timer-warning":""}`}><Clock3 size={17}/><span>{formatTime(secondsLeft)}</span><small>remaining</small></div><div className="header-actions"><span className="flag-count"><Flag size={15}/> {flaggedCount} saved</span><button className="icon-button" onClick={onExit}><X size={19}/></button></div></div><ProgressBar value={progress} label={`Question ${index+1} of ${total}`}/></header>}
